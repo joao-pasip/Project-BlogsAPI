@@ -14,7 +14,8 @@
     "morgan": "^1.10.0",
     "mysql2": "2.1.0",
     "sequelize": "6.3.4",
-    "shelljs": "0.8.4"
+    "shelljs": "0.8.4",
+    "zod": "^3.17.3"
   },
   "main": "src/server.js",
   "scripts": {
@@ -25,6 +26,7 @@
     "drop": "npx sequelize-cli db:drop",
     "seed": "npx sequelize-cli db:seed:all",
     "pretest": "(npm run kill:test && NODE_ENV=test npm run start:test) &",
+    "mytest": "NODE_ENV=test npm run start:test",
     "test": "npx -y wait-on -t 300000 http://localhost:3030 && NODE_ENV=test jest -i --verbose --forceExit",
     "posttest": "npm run kill:test",
     "test-coverage": "jest -i --verbose --forceExit --coverage",
@@ -34,8 +36,8 @@
   "devDependencies": {
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.2.0",
-    "eslint-plugin-import": "2.22.1",
     "eslint-config-trybe-backend": "1.0.3",
+    "eslint-plugin-import": "2.22.1",
     "frisby": "2.1.2",
     "jest": "26.0.1",
     "jest-each": "^28.0.1",
