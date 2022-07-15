@@ -1,8 +1,9 @@
 const { MyError } = require('../utils/customerError');
 
 class GlobalError {
-  constructor(defaultStatus = 500) {
+  constructor(defaultStatus) {
     this.defaultStatus = defaultStatus;
+    this.handle = this.handle.bind(this);
   }
 
   handle(error, _req, res, _next) {
@@ -14,6 +15,6 @@ class GlobalError {
   }
 }
 
-const globalError = new GlobalError();
+const globalError = new GlobalError(500);
 
 module.exports = globalError;
