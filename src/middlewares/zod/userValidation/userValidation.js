@@ -1,12 +1,17 @@
-// const { userSchema } = require('./userSchema');
+const { MyError } = require('../../../utils/customerError');
+const { userSchema } = require('./userSchema');
 
-// const userValidation = (req, _res, next) => {
-//   const { email, password } = req.body;
-//   console.log(email, password);
-//   const error = userSchema.safeParse({ email, password });
-//   console.log(error);
-//   next();
-// };
+const userValidation = (req, res, next) => {
+  try {
+    const user = req.body;
+    const error = userSchema.safeParse(user);
+    if (error.success) return next(); 
+    const { issues: [{ message }] } = error.error;
+    if (message) throw new MyError(400, message);
+  } catch (error) {
+    return res.status(error.status).json({ message: error.message });
+  }
+};
 
 // const { MyError } = require('../../../utils/customerError');
 
@@ -26,6 +31,6 @@
 
 // const userValidation = new UserValidation(userSchema);
 
-// module.exports = {
-//   userValidation,
-// };
+module.exports = {
+  userValidation,
+};
