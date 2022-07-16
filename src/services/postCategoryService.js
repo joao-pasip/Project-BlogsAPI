@@ -16,6 +16,7 @@ const postCategoryService = async (name) => {
     name,
   };
   // console.log(createCategory.null);
+  // testes
   return newCategory;
 };
 
