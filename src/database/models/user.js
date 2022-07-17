@@ -1,8 +1,4 @@
 'use strict';
-/**
- * @param {import('sequelize').Sequelize} sequelize
- * @param {import('sequelize').DataTypes} DataTypes
- */
 
 const User = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -19,8 +15,8 @@ const User = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-  User.associate = (model) => {
-    User.hasMany(model.BlogPost, { as: 'blogPost', foreignKey: 'userId' })
+  User.associate = (models) => {
+    User.hasMany(models.BlogPost, { as: 'blogPosts', foreignKey: 'userId' })
   }
 
   return User;

@@ -1,4 +1,4 @@
-const { User } = require('../database/models/index');
+const { User } = require('../database/models');
 // const { MyError } = require('../utils/customerError');
 const { generateToken } = require('../utils/token/generateToken');
 

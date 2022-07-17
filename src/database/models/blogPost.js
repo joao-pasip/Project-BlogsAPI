@@ -1,8 +1,4 @@
 'use strict';
-/**
- * @param {import('sequelize').Sequelize} sequelize
- * @param {import('sequelize').DataTypes} DataTypes
- */
 
 const BlogPost = (sequelize, DataTypes) => {
   const BlogPost = sequelize.define('BlogPost', {
@@ -14,7 +10,6 @@ const BlogPost = (sequelize, DataTypes) => {
     content: DataTypes.STRING,
     userId: {
       type: DataTypes.INTEGER,
-      foreignKey: true,
     },
     published: {
       type: DataTypes.DATE,
