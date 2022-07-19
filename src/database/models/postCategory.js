@@ -10,10 +10,12 @@ const PostCategory = (sequelize, DataTypes) => {
     postId: {
       type: DataTypes.INTEGER,
       foreingKey: true,
+      primaryKey: true,
     },
     categoryId: {
       type: DataTypes.INTEGER,
       foreingKey: true,
+      primaryKey: true,
     }
   }, {
     tableName: 'PostCategories',
@@ -33,7 +35,7 @@ const PostCategory = (sequelize, DataTypes) => {
       through: PostCategory,
       foreingKey: 'postId',
       otherKey: 'categoryId',
-    })
+    });
   };
 
   return PostCategory;
