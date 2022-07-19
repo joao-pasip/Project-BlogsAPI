@@ -9,12 +9,12 @@ const PostCategory = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define('PostCategory', {
     postId: {
       type: DataTypes.INTEGER,
-      foreingKey: true,
+      foreignKey: true,
       primaryKey: true,
     },
     categoryId: {
       type: DataTypes.INTEGER,
-      foreingKey: true,
+      foreignKey: true,
       primaryKey: true,
     }
   }, {
@@ -25,15 +25,15 @@ const PostCategory = (sequelize, DataTypes) => {
   // relacionamento de N:N
   PostCategory.associate = (models) => {
     models.Category.belongsToMany(models.BlogPost, {
-      as: 'postCategory',
+      as: 'BlogPosts',
       through: PostCategory,
-      foreingKey: 'categoryId',
+      foreignKey: 'categoryId',
       otherKey: 'postId',
     });
     models.BlogPost.belongsToMany(models.Category, {
-      as: 'postBlogPost',
+      as: 'categories',
       through: PostCategory,
-      foreingKey: 'postId',
+      foreignKey: 'postId',
       otherKey: 'categoryId',
     });
   };

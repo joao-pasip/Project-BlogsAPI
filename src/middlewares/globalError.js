@@ -11,7 +11,7 @@ class GlobalError {
       return res.status(error.status).json({ message: error.message });
     }
 
-    return res.status(this.defaultStatus).json({ message: 'verifica aí, valeus parça' });
+    return res.status(this.defaultStatus).json({ message: error.message });
   }
 }
 
