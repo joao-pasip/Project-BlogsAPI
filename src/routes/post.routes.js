@@ -8,9 +8,11 @@ const { getAllPostController } = require('../controllers/getAllPostController');
 const { getByIdPostController } = require('../controllers/getByIdPostController');
 const { putByIdPostController } = require('../controllers/putByIdPostController');
 const { deleteByIdPostController } = require('../controllers/deleteByIdPostController');
+const { getByQueryPostController } = require('../controllers/getByQueryPostController');
 
 const postRoutes = Router();
 
+postRoutes.get('/post/search', tokenValidation, getByQueryPostController);
 postRoutes.post('/post', tokenValidation, postValidation, postPostController);
 postRoutes.get('/post', tokenValidation, getAllPostController);
 postRoutes.get('/post/:id', tokenValidation, getByIdPostController);
